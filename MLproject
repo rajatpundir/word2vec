@@ -1,0 +1,23 @@
+name: WordEmbeddings
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      filename: {type: string, default: "sample_input.txt"}
+      vocabulary_size: {type: int, default: 1000}
+      batch_size: {type: int, default: 128}
+      skip_window: {type: int, default: 1}
+      num_skips: {type: int, default: 2}
+      embedding_size: {type: int, default: 128}
+      num_sampled: {type: int, default: 64}
+      num_steps: {type: int, default: 2001}
+    command: "python train.py --filename {filename}
+                              --vocabulary-size {vocabulary_size}
+                              --batch-size {batch_size}
+                              --skip-window {skip_window}
+                              --num-skips {num_skips}
+                              --embedding-size {embedding_size}
+                              --num-sampled {num_sampled}
+                              --num_steps {num_steps}"
